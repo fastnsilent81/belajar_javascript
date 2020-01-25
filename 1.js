@@ -117,15 +117,19 @@ Beginilah cara pemain menukar hadiah:
       current_name = players[i].name;// console.log(current_name);
       current_points = players[i].points;      
 
-      for(var j=0;j<item_harga_arr.length;j++){         
+      
+      for (var x=1; x>0; x++){
+        var tukar = false
+        for(var j=0;j<item_harga_arr.length;j++){         
           if((current_points >= item_harga_arr[j])&& (item_stock_arr[j] > 0)){ //maka lakukan penukaran hadiah
-              do{
                  current_points = current_points - item_harga_arr[j];
                  item_stock_arr[j] --;
                  items_arr.push(item_name_arr[j]);
-              }
-              while(current_points >= item_harga_arr[j] && item_stock_arr[j] > 0);              
-          }
+                 tukar = true
+           }
+             // while(current_points >= item_harga_arr[j] && item_stock_arr[j] > 0);              
+        }
+          if(tukar === false){break}
       }
       result_obj.name = current_name;
       result_obj.items = items_arr;      
